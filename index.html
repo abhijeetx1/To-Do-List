@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="download.jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>To Do List </h2>
+            <h5> Devloped by <a href="https://github.com/abhijeetx1">ABHIJEETX1</a> </h5>
+
+            <input type="text" placeholder="Write here" id="input">
+            <ul id="list">
+
+            </ul>
+            
+        </div>
+    </div>
+
+
+
+
+
+<script>
+    let input = document.querySelector('#input'); // Renamed from 'input' to 'inputBx'
+    let list = document.querySelector('#list');
+    
+    input.addEventListener("keyup", function(event){
+        if (event.key == "Enter") {
+            addItem(this.value);
+            this.value = '';
+        }
+    });
+    
+    let addItem = (input) => {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `${input}<i></i>`; // Corrected template literal and fixed <i> tag
+    
+
+          listItem.addEventListener("click", function(){
+            this.classList.toggle('done');
+          })  
+
+          listItem.querySelector('i').addEventListener('click', function(){
+            listItem.remove();
+          })
+
+        list.appendChild(listItem);
+    }
+    
+</script>
+
+
+
+
+</body>
+</html>
